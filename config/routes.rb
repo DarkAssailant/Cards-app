@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about', to:'pages#about'
   get '/api' => 'pages#index', defaults: { format: :json }
+  resources :developers
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
