@@ -1,0 +1,19 @@
+{
+  "data":[
+    {
+    "id": 1,
+    "soid": "lp86056",
+    "name": "Luis DP"
+    },
+    {
+      "id": 2,
+      "soid": "lp86055",
+      "name": "LDP"
+    },
+    {
+      "id": 3,
+      "soid": "lp86056",
+      "name": "LDP"
+    }
+  ]
+}
