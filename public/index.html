@@ -1,4 +1,4 @@
-<!-- public/index.html --> 
+<!-- public/index.html -->
 <html>
  <head>
     <title>Angular 2 QuickStart</title>
@@ -11,17 +11,17 @@
     <script src="/assets/zone.js/dist/zone.js"></script>
     <script src="/assets/reflect-metadata/Reflect.js"></script>
     <script src="/assets/systemjs/dist/system.src.js"></script>
-    
+
   </head>
-  <body> 
+  <body>
     <!-- 2. Configure SystemJS -->
-    <script src="/assets/system.config.js"></script>
+    <script src="app/system.config.js"></script>
     <script>
     // // and to finish, let's boot the app!
     System.import('app').catch(function(err){ console.error(err); });
-    
-    </script> 
+
+    </script>
     <base href="/">
-    <my-app></my-app> 
+    <my-app></my-app>
   </body>
 </html>
