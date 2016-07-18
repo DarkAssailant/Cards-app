@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  developer_id: 
+  pss_id: 
+  hours: 
+
+two:
+  description: MyString
+  developer_id: 
+  pss_id: 
+  hours: 

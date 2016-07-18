@@ -1,0 +1,15 @@
+<h1>Lista de desarrolladores</h1>
+<table>
+  <th>
+    <tr>
+      <td>SOID</td>
+      <td>Name</td>
+    </tr>
+  </th>
+  <% @developers.each do |developer| %>
+    <tr>
+      <td><%= developer.soid%></td>
+      <td><%= developer.name%></td>
+    </tr>
+  <% end %>
+</table>
