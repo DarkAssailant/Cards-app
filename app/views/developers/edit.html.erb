@@ -1,0 +1,22 @@
+<h1>Edit Article</h1>
+<!-- <% if @developer.errors.any? %>
+ <h2>Errores encontrados:</h2>
+  <ul>
+     <% @developer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+     <% end %>
+  </ul>
+ <% end %> -->
+<%= form_for @developer do |f| %>
+  <div>
+    <%= f.label :soid %></br>
+    <%= f.text_field :soid %>
+  </div>
+  <div>
+  <%= f.label :name %></br>
+  <%= f.text_field :name %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "regresar al listado", developers_path %>

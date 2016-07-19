@@ -10,6 +10,8 @@
     <tr>
       <td><%= developer.soid%></td>
       <td><%= developer.name%></td>
+      <td><%= link_to 'Show', developer %></td>
+      <td><%= link_to 'Edit', edit_developer_path(developer) %></td>
     </tr>
   <% end %>
 </table>
