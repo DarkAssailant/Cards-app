@@ -13,23 +13,6 @@ var developer_data_service_1 = require('./developer-data.service');
 //import { Developer } from './developer'
 //no necesitamos agregar el provider por que es un subcomponent
 var DeveloperListComponent = (function () {
-    // developers : Developer[] = [
-    //   {
-    //   "id": 1,
-    //   "soid": "lp86056",
-    //   "name": "Luis DP"
-    //   },
-    //   {
-    //     "id": 2,
-    //     "soid": "lp86055",
-    //     "name": "LDP"
-    //   },
-    //   {
-    //     "id": 3,
-    //     "soid": "lp86056",
-    //     "name": "LDP"
-    //   }
-    // ];
     function DeveloperListComponent(developerDataService) {
         this.developerDataService = developerDataService;
         this.devtitle = 'main component';

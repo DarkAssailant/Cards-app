@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
   get 'about', to:'pages#about'
   get '/api' => 'pages#index', defaults: { format: :json }
   resources :developers #restful routes
+  resources :mrves
+  resources :psses
   #we can specify resources :developers, :mrfs
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

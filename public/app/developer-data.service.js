@@ -11,8 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core'); //tells that will be injectable by our dependency injector
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-require('rxjs/add/operator/toPromise');
-require('rxjs/Rx');
 var DeveloperDataService = (function () {
     function DeveloperDataService(http) {
         this.http = http;

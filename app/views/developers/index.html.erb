@@ -1,4 +1,7 @@
 <h1>Lista de desarrolladores</h1>
+<div>
+  <%= link_to 'crear nuevos desarrolladores', new_developer_path %>
+</div>
 <table>
   <th>
     <tr>
@@ -12,6 +15,7 @@
       <td><%= developer.name%></td>
       <td><%= link_to 'Show', developer %></td>
       <td><%= link_to 'Edit', edit_developer_path(developer) %></td>
+      <td><%= link_to 'Delete', developer_path(developer), method: :delete %></td>
     </tr>
   <% end %>
 </table>

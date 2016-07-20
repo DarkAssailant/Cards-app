@@ -68,7 +68,9 @@ class DevelopersController < ApplicationController
 
   # DELETE /developers/3
   def destroy
-
+      @article.destroy
+      flash[:notice] = "El desarrollador se elimino satisfactoriamente"
+      redirect_to developers_path
   end
 
 

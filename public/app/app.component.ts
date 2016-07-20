@@ -6,6 +6,9 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
   template: `
     <h1>{{title}}</h1>
     <p>hey</p>
+    <p>
+        <a href="/developers" > Developers API</a>
+    </p>
     <a [routerLink]="['/developers']">Developers</a>
     <a [routerLink]="['/about']">About</a>
     <router-outlet></router-outlet>
@@ -14,7 +17,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 })
 
 
-    
+
 export class AppComponent {
   title = 'main component';
 }
