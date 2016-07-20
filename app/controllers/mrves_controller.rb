@@ -1,5 +1,17 @@
 class MrvesController < ApplicationController
+
+  before_action :get_mrves, only: [:show, :edit, :update, :destroy]
+
+  private def get_mrves
+        @mrf = Mrf.find(params[:id])
+  end
+
   def index
+    @mrfs = Mrf.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @mrfs }
+    end
   end
 
   def show
@@ -13,7 +25,6 @@ class MrvesController < ApplicationController
   end
 
   def edit
-    @mrf = Mrf.new
   end
 
   def update

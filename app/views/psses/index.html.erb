@@ -1,2 +1,19 @@
-<h1>Psses#index</h1>
-<p>Find me in app/views/psses/index.html.erb</p>
+<h1>Lista de PSS's</h1>
+<div>
+  <%= link_to 'crear nuevos PSS', new_pss_path %>
+</div>
+<table>
+  <th>
+    <tr>
+      <td>Name</td>
+    </tr>
+  </th>
+  <% @psses.each do |pss| %>
+    <tr>
+      <td><%= pss.name%></td>
+      <td><%= link_to 'Show', pss %></td>
+      <td><%= link_to 'Edit', edit_pss_path(pss) %></td>
+      <td><%= link_to 'Delete', pss_path(pss), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
