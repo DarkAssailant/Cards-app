@@ -6,6 +6,10 @@ class MrvesController < ApplicationController
         @mrf = Mrf.find(params[:id])
   end
 
+  private def mrf_params
+    params.require(:mrf).permit(:mrf_number, :developer_id, :pss_id, :hours)
+  end
+
   def index
     @mrfs = Mrf.all
     respond_to do |format|
@@ -25,9 +29,19 @@ class MrvesController < ApplicationController
   end
 
   def edit
+    #@developers = Developer.scoped
+    @developers = Developer.all
+    @psses = Pss.all
   end
 
   def update
+    #render plain: params[:mrf].inspect
+    if @mrf.update(mrf_params)
+      flash[:notice] = "El MRF se actualizo con éxito"
+      redirect_to mrf_path(@mrf)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

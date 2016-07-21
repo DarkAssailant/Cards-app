@@ -1,6 +1,8 @@
 <h1>MRF Information</h1>
-<p>Número: </p>
+<p>Número: <%= @mrf.mrf_number %></p>
 <p>Descripción: <%= @mrf.description %></p>
-<p>Descripción: <%= @mrf.hours %></p>
+<p>Desarrollador: <%= @mrf.developer.name %></p>
+<p>PPS: <%= @mrf.pss.name %></p>
+<p>Horas: <%= @mrf.hours %></p>
 
 <%= link_to "regresar al listado", mrves_path %>

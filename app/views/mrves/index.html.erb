@@ -5,9 +5,23 @@
 <table>
   <th>
     <tr>
+      <td>MRF #</td>
       <td>Descripción</td>
       <td>Desarrollador</td>
-      <td>PS</td>
+      <td>PSS</td>
+      <td>Horas</td>
     </tr>
   </th>
+  <% @mrfs.each do |mrf| %>
+    <tr>
+      <td><%= mrf.mrf_number%></td>
+      <td><%= mrf.description%></td>
+      <td><%= mrf.developer.name%></td>
+      <td><%= mrf.pss.name%></td>
+      <td><%= mrf.hours%></td>
+      <td><%= link_to 'Show', mrf %></td>
+      <td><%= link_to 'Edit', edit_mrf_path(mrf) %></td>
+      <td><%= link_to 'Delete', mrf_path(mrf), method: :delete %></td>
+    </tr>
+  <% end %>
 </table>

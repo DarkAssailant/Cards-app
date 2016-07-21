@@ -1,11 +1,27 @@
 <%= form_for @mrf do |f| %>
   <div>
+    <%= f.label :mrf_number %></br>
+    <%= f.text_field :mrf_number %>
+  </div>
+  <div>
     <%= f.label :description %></br>
     <%= f.text_field :description %>
   </div>
   <div>
-  <%= f.label :hours %></br>
-  <%= f.text_field :hours %>
+    <!-- <%= f.label :developer %></br>
+    <%= f.text_field :developer %> -->
+    <%= f.label :developer %></br>
+    <!--<% developers_array = @developers.map{ |dev| [dev.name, dev.id] } %>-->
+    <%= f.select :developer_id, options_from_collection_for_select(@developers, :id, :name, @mrf.developer_id) %>
+    <!-- <%= f.select :developer_id, options_for_select(developers_array) %> -->
+  </div>
+  <div class="field">
+    <%= f.label :pss %></br>
+    <%= f.select :pss_id, options_from_collection_for_select(@psses, :id, :name, @mrf.pss_id) %>
+  </div>
+  <div>
+    <%= f.label :hours %></br>
+    <%= f.text_field :hours %>
   </div>
   <%= f.submit %>
 <% end %>
