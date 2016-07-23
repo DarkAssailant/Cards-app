@@ -18,8 +18,8 @@ var DeveloperDataService = (function () {
     /*injecting Http as dependency se puede por que el service es
     injectable y puede tener dependencias adicionales*/
     DeveloperDataService.prototype.getDevelopers = function () {
-        return this.http.get('app/developer-data.json')
-            .map(function (response) { return response.json().data; });
+        return this.http.get('./developers.json')
+            .map(function (response) { return response.json(); });
     };
     DeveloperDataService = __decorate([
         core_1.Injectable(), 

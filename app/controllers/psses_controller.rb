@@ -60,5 +60,4 @@ class PssesController < ApplicationController
       redirect_to psses_path
   end
 
-
 end

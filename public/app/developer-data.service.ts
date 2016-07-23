@@ -8,10 +8,11 @@ export class DeveloperDataService{
   constructor(private http: Http){}
   /*injecting Http as dependency se puede por que el service es
   injectable y puede tener dependencias adicionales*/
- 
+
   getDevelopers(){
-    return this.http.get('app/developer-data.json')
-    .map(response => <Developer[]>response.json().data);
+    return this.http.get('./developers.json')
+    // .map(response => <Developer[]>response.json().data);
+    .map(response => <Developer[]>response.json());
   }
-  
+
 }

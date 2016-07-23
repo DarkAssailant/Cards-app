@@ -7,12 +7,13 @@ import { DeveloperListComponent } from './developer-list.component';
 @Component({
   selector: 'developers',
   templateUrl: '/app/templates/developers/index.html',
+  styleUrls: ['./app/css/developers/main.css'],
   directives: [DeveloperListComponent],
   providers: [DeveloperDataService]
-  
+
 })
 
-export class DeveloperMainComponent { 
+export class DeveloperMainComponent {
   // ngOnInit(){
   //   let developerDataService = new DeveloperDataService();
   // }

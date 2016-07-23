@@ -7,7 +7,8 @@ class MrvesController < ApplicationController
   end
 
   private def mrf_params
-    params.require(:mrf).permit(:mrf_number, :developer_id, :pss_id, :hours)
+    # params.require(:mrf).permit(:mrf_number, :developer_id, :pss_id, :hours)
+    params.require(:mrf).permit(:mrf_number, :description, :developer_id, :pss_id, :hours)
   end
 
   def index
@@ -23,9 +24,18 @@ class MrvesController < ApplicationController
 
   def new
     @mrf = Mrf.new
+    @developers = Developer.all
+    @psses = Pss.all
   end
 
   def create
+    @mrf = Mrf.new(mrf_params)
+    if @mrf.save
+      flash[:notice] = "El MRF se creo con éxito"
+      redirect_to mrf_path(@mrf)
+    else
+      render 'new'
+    end
   end
 
   def edit

@@ -10,13 +10,13 @@
   <div>
     <!-- <%= f.label :developer %></br>
     <%= f.text_field :developer %> -->
-    <%= f.label :developer %></br>
+    <%= f.label :developer_id %></br>
     <!--<% developers_array = @developers.map{ |dev| [dev.name, dev.id] } %>-->
     <%= f.select :developer_id, options_from_collection_for_select(@developers, :id, :name, @mrf.developer_id) %>
     <!-- <%= f.select :developer_id, options_for_select(developers_array) %> -->
   </div>
   <div class="field">
-    <%= f.label :pss %></br>
+    <%= f.label :pss_id %></br>
     <%= f.select :pss_id, options_from_collection_for_select(@psses, :id, :name, @mrf.pss_id) %>
   </div>
   <div>

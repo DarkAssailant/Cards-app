@@ -16,6 +16,7 @@ var DeveloperListComponent = (function () {
     function DeveloperListComponent(developerDataService) {
         this.developerDataService = developerDataService;
         this.devtitle = 'main component';
+        this.developers = [{}];
     }
     //private defines propertys bases on attribute
     // will render like this.developerDataService = DeveloperDataService
@@ -23,7 +24,6 @@ var DeveloperListComponent = (function () {
         var _this = this;
         this.developerDataService.getDevelopers()
             .subscribe(function (developers) { return _this.developers = developers; });
-        console.log(this.developers);
     };
     DeveloperListComponent = __decorate([
         core_1.Component({

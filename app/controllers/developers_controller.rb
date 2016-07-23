@@ -13,14 +13,13 @@ class DevelopersController < ApplicationController
     end
   end
 
+  # GET /developers/3
   def show
   end
-
 
   private def get_developer
         @developer = Developer.find(params[:id])
   end
-
 
   private def developer_params
     params.require(:developer).permit(:soid,:name)
@@ -36,8 +35,6 @@ class DevelopersController < ApplicationController
   def new
     @developer = Developer.new
   end
-  # GET /developers/3
-
 
   # POST /developers/create
   def create
@@ -53,7 +50,6 @@ class DevelopersController < ApplicationController
   end
 
   def edit
-
   end
 
   # PUT /developers/3
@@ -68,13 +64,9 @@ class DevelopersController < ApplicationController
 
   # DELETE /developers/3
   def destroy
-      @article.destroy
+      @developer.destroy
       flash[:notice] = "El desarrollador se elimino satisfactoriamente"
       redirect_to developers_path
   end
-
-
-
-
 
 end

@@ -20,6 +20,7 @@ var DeveloperMainComponent = (function () {
         core_1.Component({
             selector: 'developers',
             templateUrl: '/app/templates/developers/index.html',
+            styleUrls: ['./app/css/developers/main.css'],
             directives: [developer_list_component_1.DeveloperListComponent],
             providers: [developer_data_service_1.DeveloperDataService]
         }), 
