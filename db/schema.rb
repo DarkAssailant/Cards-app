@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723014627) do
+ActiveRecord::Schema.define(version: 20160724030833) do
 
-  create_table "developers", id: false, force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "soid"
+  create_table "developers", force: :cascade do |t|
+    t.string "soid", null: false
+    t.string "name"
   end
+
+  add_index "developers", ["soid"], name: "index_developers_on_soid", unique: true
 
   create_table "mrves", primary_key: "mrf_number", force: :cascade do |t|
     t.string   "description"
-    t.integer  "developer_id"
     t.integer  "pss_id"
     t.integer  "hours"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "developer_id"
   end
 
   create_table "psses", force: :cascade do |t|
