@@ -7,7 +7,3 @@ moved checkedbox a los mrf
 
 ver si horas no agrego total si no por día...
 añadir editar y eliminar registros
-
-
-
-ARREGLAR EL FOREIGN KEY DE MRF QUE VEA AL SOID DE DEVELOPER

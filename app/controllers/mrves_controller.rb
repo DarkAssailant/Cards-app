@@ -55,5 +55,8 @@ class MrvesController < ApplicationController
   end
 
   def destroy
+    @mrf.destroy
+    flash[:notice] = "El Mrf se elimino satisfactoriamente"
+    redirect_to mrves_path
   end
 end

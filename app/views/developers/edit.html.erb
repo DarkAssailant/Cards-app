@@ -1,11 +1,11 @@
 <h1>Edit Article</h1>
-<!-- <% if @developer.errors.any? %>
+<% if @developer.errors.any? %>
  <h2>Errores encontrados:</h2>
   <ul>
      <% @developer.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
      <% end %>
   </ul>
- <% end %> -->
-<%= render 'partials/form' %>
+ <% end %>
+<%= render 'partials/dev_form' %>
 <%= link_to "regresar al listado", developers_path %>

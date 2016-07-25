@@ -2,7 +2,7 @@ class DevelopersController < ApplicationController
   #before_filter :get_developer #se asegura que  antes de entrar a la acción obtengamos el developer
   #entonces en la accion de show se asegura que lo que busque sea en este developer
 
-  before_action :get_developer, only: [:show, :edit, :update, :destroy]
+  before_action :get_developer, only: [:show, :update, :destroy, :edit]
   #before_action :check_auth, only: [:edit, :update, :destroy]
 
   def index
@@ -54,11 +54,37 @@ class DevelopersController < ApplicationController
 
   # PUT /developers/3
   def update
-    if @developer.update(developer_params)
-      flash[:notice] = "El desarrollador se actualizo con éxito"
-      redirect_to developer_path(@developer)
+    @previous_id = @developer.soid
+    # @developer.update(developer_params)
+    if(@previous_id != developer_params[:soid])
+
+      @Developer = Developer.new(developer_params)
+      if @Developer.save
+        @developer.destroy
+        flash[:notice] = "El desarrollador se ha actualizado con éxito"
+        redirect_to developer_path(@Developer)
+      else
+        render 'new'
+      end
+      # if Developer.find_by_soid(developer_params[:soid])
+      #   render 'edit'
+      # else
+      #   @developer.destroy
+      #
+      #   redirect_to developer_path(@developer)
     else
-      render 'edit'
+      #render plain: params[:developer].inspect
+      #@developer.update({ @previous_id, :name => developer_params.name, :soid => developer_params.soid})
+      #render plain: @developer.inspect
+      #render plain: developer_params
+      #render plain: { @previous_id, :name => developer_params[:name], :soid => developer_params[:soid]}
+      #render plain:   " #{@previous_id}, :name => #{developer_params[:name]}, :soid => #{developer_params[:soid]}"
+       if @developer.update(developer_params)
+         flash[:notice] = "El desarrollador se actualizo con éxito"
+         redirect_to developer_path(@developer)
+       else
+         render 'edit'
+       end
     end
   end
 
