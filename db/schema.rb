@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724030833) do
+ActiveRecord::Schema.define(version: 20160727233304) do
 
   create_table "developers", force: :cascade do |t|
     t.string "soid", null: false
@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20160724030833) do
   create_table "mrves", primary_key: "mrf_number", force: :cascade do |t|
     t.string   "description"
     t.integer  "pss_id"
-    t.integer  "hours"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "developer_id"
+    t.integer  "defect_counter"
+    t.integer  "asset_updates"
+    t.boolean  "moved"
   end
 
   create_table "psses", force: :cascade do |t|
