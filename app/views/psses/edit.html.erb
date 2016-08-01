@@ -1,3 +1,11 @@
 <h1>Edit PSS</h1>
+<% if @pss.errors.any? %>
+ <h2>Errores encontrados:</h2>
+  <ul>
+     <% @pss.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+     <% end %>
+  </ul>
+ <% end %>
 <%= render 'partials/pss_form' %>
 <%= link_to "regresar al listado", psses_path %>

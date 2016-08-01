@@ -8,7 +8,7 @@ class MrvesController < ApplicationController
 
   private def mrf_params
     # params.require(:mrf).permit(:mrf_number, :developer_id, :pss_id, :hours)
-    params.require(:mrf).permit(:mrf_number, :description, :developer_id, :pss_id, :hours)
+    params.require(:mrf).permit(:mrf_number, :developer_id, :pss_id, :description, :asset_updates, :defect_counter, :moved)
   end
 
   def index
@@ -34,6 +34,8 @@ class MrvesController < ApplicationController
       flash[:notice] = "El MRF se creo con éxito"
       redirect_to mrf_path(@mrf)
     else
+      @developers = Developer.all
+      @psses = Pss.all
       render 'new'
     end
   end
@@ -50,7 +52,12 @@ class MrvesController < ApplicationController
       flash[:notice] = "El MRF se actualizo con éxito"
       redirect_to mrf_path(@mrf)
     else
+      #render plain: @mrf.errors.full_messages
+      @developers = Developer.all
+      @psses = Pss.all
       render 'edit'
+      #render json: @mrf
+      #render plain: @mrf.developer
     end
   end
 

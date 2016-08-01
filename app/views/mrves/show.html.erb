@@ -3,6 +3,8 @@
 <p>Descripción: <%= @mrf.description %></p>
 <p>Desarrollador: <%= @mrf.developer.name %></p>
 <p>PPS: <%= @mrf.pss.name %></p>
-<p>Horas: <%= @mrf.hours %></p>
+<p>Act Assets: <%= @mrf.asset_updates %></p>
+<p>Defects: <%= @mrf.defect_counter %></p>
+<p>Moved: <%= @mrf.moved %></p>
 
 <%= link_to "regresar al listado", mrves_path %>

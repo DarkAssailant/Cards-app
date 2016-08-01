@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727233304) do
+ActiveRecord::Schema.define(version: 20160729171605) do
 
   create_table "developers", force: :cascade do |t|
     t.string "soid", null: false
@@ -23,13 +23,22 @@ ActiveRecord::Schema.define(version: 20160727233304) do
   create_table "mrves", primary_key: "mrf_number", force: :cascade do |t|
     t.string   "description"
     t.integer  "pss_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "developer_id"
-    t.integer  "defect_counter"
-    t.integer  "asset_updates"
-    t.boolean  "moved"
+    t.integer  "defect_counter", default: 0,     null: false
+    t.integer  "asset_updates",  default: 0,     null: false
+    t.boolean  "moved",          default: false, null: false
   end
+
+  create_table "mrves_hours", force: :cascade do |t|
+    t.integer "hours",        default: 0, null: false
+    t.date    "day"
+    t.integer "mrf_id"
+    t.string  "developer_id"
+  end
+
+  add_index "mrves_hours", ["mrf_id"], name: "index_mrves_hours_on_mrf_id"
 
   create_table "psses", force: :cascade do |t|
     t.string   "name"

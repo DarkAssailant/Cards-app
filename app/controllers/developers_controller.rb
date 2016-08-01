@@ -56,22 +56,18 @@ class DevelopersController < ApplicationController
   def update
     @previous_id = @developer.soid
     # @developer.update(developer_params)
-    if(@previous_id != developer_params[:soid])
-
+    if @previous_id != developer_params[:soid]
+      #lo de bajo es igual al create
       @Developer = Developer.new(developer_params)
       if @Developer.save
         @developer.destroy
         flash[:notice] = "El desarrollador se ha actualizado con éxito"
         redirect_to developer_path(@Developer)
       else
-        render 'new'
+        render 'edit'
+        #render plain: @Developer.errors.full_messages
       end
-      # if Developer.find_by_soid(developer_params[:soid])
-      #   render 'edit'
-      # else
-      #   @developer.destroy
-      #
-      #   redirect_to developer_path(@developer)
+
     else
       #render plain: params[:developer].inspect
       #@developer.update({ @previous_id, :name => developer_params.name, :soid => developer_params.soid})
