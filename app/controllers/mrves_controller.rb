@@ -30,8 +30,11 @@ class MrvesController < ApplicationController
 
   def create
     @mrf = Mrf.new(mrf_params)
-    if @mrf.save
+    #begin
+    if  @mrf.save
+    #rescue ActiveRecord::RecordInvalid => e
       flash[:notice] = "El MRF se creo con éxito"
+      #flash[:notice] = e.message
       redirect_to mrf_path(@mrf)
     else
       @developers = Developer.all
@@ -48,7 +51,14 @@ class MrvesController < ApplicationController
 
   def update
     #render plain: params[:mrf].inspect
-    if @mrf.update(mrf_params)
+    @mrf.assign_attributes(mrf_params)
+    #if @mrf.valid?
+    @helper =  Mrf.new(mrf_params)
+    # if @helper.valid? || @mrf.mrf_number === @helper.mrf_number
+    if @mrf.mrf_number === @helper.mrf_number || @helper.valid?
+
+      #render json: @mrf
+      @mrf.update(mrf_params)
       flash[:notice] = "El MRF se actualizo con éxito"
       redirect_to mrf_path(@mrf)
     else

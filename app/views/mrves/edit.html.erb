@@ -7,5 +7,14 @@
      <% end %>
   </ul>
  <% end %>
+ <% if @helper %>
+  <% @helper.errors.any? %>
+  <h2>Errores encontrados:</h2>
+   <ul>
+      <% @helper.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+      <% end %>
+   </ul>
+  <% end %>
 <%= render 'partials/mrf_form' %>
 <%= link_to "regresar al listado", mrves_path %>

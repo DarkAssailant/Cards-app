@@ -3,6 +3,7 @@ class Mrf < ActiveRecord::Base
   belongs_to :pss
   #validates :developer_id, presence: true
   #validates :pss_id, presence: true
+  #validates_uniqueness_of :mrf_number
   validates :mrf_number, uniqueness: true
   validates :defect_counter, presence: true
   validates :asset_updates, presence: true
