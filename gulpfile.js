@@ -1,6 +1,6 @@
 var gulp = require('gulp'); //node busque en node_modules por un package named gulp
 var sass = require('gulp-sass') //required sass plugin npm install gulp-sass --save-dev
-
+//var browserSync = require('browser-sync').create();
 // gulp.task('hello', function() { //to run gulp hello
 //   console.log('Hello Luis');
 // });
@@ -12,7 +12,18 @@ gulp.task('sass', function() {
   return gulp.src('./public/app/scss/**/*.+(scss|sass)')
     .pipe(sass()) //Converts Sass to CSS with gulp-sass
     .pipe(gulp.dest('./public/app/css'))
+    // .pipe(browserSync.reload({
+    //     stream: true
+    // }))
 });
+
+gulp.task('watch', ['browserSync', 'sass'], function (){
+  gulp.watch('./public/app/scss/**/*.+(scss|sass)', ['sass']);
+  // Reloads the browser whenever HTML or JS files change
+  //gulp.watch('./public/app/js/**/*.js', browserSync.reload);
+  //gulp.watch('./public/app/*.html', browserSync.reload);
+  // Other watchers
+})
 
 /*Gulp-sass uses LibSass to convert Sass into CSS.
  It's much quicker than Ruby-based methods.
@@ -29,3 +40,11 @@ When you use a glob, the computer checks file names and paths
  for the specified pattern. If the pattern exists, then a file is matched.
  https://css-tricks.com/gulp-for-beginners/
  */
+
+ gulp.task('browserSync', function() {
+   browserSync.init({
+     server: {
+       baseDir: 'app'
+     },
+   })
+ })

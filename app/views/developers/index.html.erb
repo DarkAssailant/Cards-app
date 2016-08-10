@@ -7,12 +7,14 @@
     <tr>
       <td>SOID</td>
       <td>Name</td>
+      <td>MRF's</td>
     </tr>
   </th>
   <% @developers.each do |developer| %>
     <tr>
       <td><%= developer.soid%></td>
       <td><%= developer.name%></td>
+      <td><%= link_to "MRF's", developer_mrves_path(developer)%></td>
       <td><%= link_to 'Show', developer %></td>
       <td><%= link_to 'Edit', edit_developer_path(developer) %></td>
       <td><%= link_to 'Delete', developer_path(developer), method: :delete %></td>

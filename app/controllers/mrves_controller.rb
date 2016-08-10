@@ -1,9 +1,17 @@
 class MrvesController < ApplicationController
 
-  before_action :get_mrves, only: [:show, :edit, :update, :destroy]
+  #before_action :get_mrves, only: [:show, :edit, :update, :destroy]
+  before_action :get_mrves, only: [:edit, :update, :destroy]
+  before_filter :get_developer
 
   private def get_mrves
         @mrf = Mrf.find(params[:id])
+  end
+
+  private def get_developer
+    if Developer.exists?(params[:developer_id])
+      @developer = Developer.find(params[:developer_id])
+    end
   end
 
   private def mrf_params
@@ -12,14 +20,42 @@ class MrvesController < ApplicationController
   end
 
   def index
-    @mrfs = Mrf.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @mrfs }
-    end
+
+    # if params[:was_moved] && params[:was_moved] != 'mrves'
+    #   #@developer = Developer.was_moved
+    #   @mrfs = Mrf.wasMoved
+    # else
+     #render plain: params
+      if params[:developer_id]
+        @mrfs = @developer.mrves
+        # redirect_to :action => :index
+        render 'mrf_by_developer'
+      else
+        @mrfs = Mrf.all
+        respond_to do |format|
+          format.html
+          format.json { render json: @mrfs }
+        end
+      end
   end
 
   def show
+    if(@developer.blank? == false)
+      #render plain: params
+      #@mrf = @developer.mrves.find(params[:id])
+      # if(@developer.mrves.find(params[:id]).valid?)
+      #@variable = @developer.mrves.find_by(mrf_number: '1233')
+      @variable = @developer.mrves.find_by(:mrf_number => params[:id])
+      #render json: @variable
+      if(@variable.blank? == false)
+        @mrf = @developer.mrves.find(params[:id])
+      else
+        flash[:notice] = 'Mrf no asociado con el usuario'
+        redirect_to :action => :index
+      end
+    else
+      @mrf = Mrf.find(params[:id])
+    end
   end
 
   def new
@@ -29,15 +65,18 @@ class MrvesController < ApplicationController
   end
 
   def create
-    @mrf = Mrf.new(mrf_params)
-    #begin
+    if @developer.blank?
+      @mrf = Mrf.new(mrf_params)
+      @developers = Developer.all
+    else
+      @mrf = @developer.mrves.new(mrf_params)
+    end
+
     if  @mrf.save
-    #rescue ActiveRecord::RecordInvalid => e
       flash[:notice] = "El MRF se creo con éxito"
-      #flash[:notice] = e.message
       redirect_to mrf_path(@mrf)
     else
-      @developers = Developer.all
+
       @psses = Pss.all
       render 'new'
     end
@@ -50,6 +89,7 @@ class MrvesController < ApplicationController
   end
 
   def update
+    #render plain: params
     #render plain: params[:mrf].inspect
     @mrf.assign_attributes(mrf_params)
     #if @mrf.valid?
@@ -57,7 +97,6 @@ class MrvesController < ApplicationController
     # if @helper.valid? || @mrf.mrf_number === @helper.mrf_number
     if @mrf.mrf_number === @helper.mrf_number || @helper.valid?
 
-      #render json: @mrf
       @mrf.update(mrf_params)
       flash[:notice] = "El MRF se actualizo con éxito"
       redirect_to mrf_path(@mrf)
@@ -67,7 +106,6 @@ class MrvesController < ApplicationController
       @psses = Pss.all
       render 'edit'
       #render json: @mrf
-      #render plain: @mrf.developer
     end
   end
 

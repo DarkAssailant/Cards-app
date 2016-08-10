@@ -1,0 +1,33 @@
+<h1>Lista de MRF</h1>
+<div>
+  <%= link_to 'crear nuevos Mrfs para este desarrollador', new_developer_mrf_path(@developer) %>
+</div>
+<table>
+  <th>
+    <tr>
+      <td>MRF #</td>
+      <td>Descripción</td>
+      <td>Desarrollador</td>
+      <td>PSS</td>
+      <!-- <td>Act Assets</td> -->
+      <!-- <td>Defects</td> -->
+      <!-- <td>Movido</td> -->
+    </tr>
+  </th>
+  <% @mrfs.each do |mrf| %>
+    <tr>
+      <td><%= mrf.mrf_number%></td>
+      <td><%= mrf.description%></td>
+      <td><%= mrf.developer.name%></td>
+      <td><%= mrf.pss.name%></td>
+      <!-- <td><%= mrf.asset_updates%></td> -->
+      <!-- <td><%= mrf.defect_counter%></td> -->
+      <!-- <td><%= mrf.moved%></td> -->
+      <!-- <td><%= link_to 'Show', developer_mrf_path(@developer, mrf) %></td> -->
+      <td><%= link_to 'Show', [@developer, mrf] %></td>
+      <td><%= link_to 'Edit', edit_developer_mrf_path(@developer,mrf) %></td>
+      <td><%= link_to 'Delete', [@developer, mrf], method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<div><%= link_to 'volver al la lista de desarrolladores', developers_path %></div>

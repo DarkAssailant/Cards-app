@@ -8,9 +8,15 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about', to:'pages#about'
   get '/api' => 'pages#index', defaults: { format: :json }
-  resources :developers #restful routes
-  resources :mrves
+  # get ':was_moved' =>
+  #     'mrves#index', as: 'mrves_moved'
+  resources :developers  do#restful routes
+    # resources :mrves, only: [:show, :index]
+    resources :mrves, only: [:show, :index, :edit, :new, :create, :update, :destroy]
+  end
+  resources :mrves, only: [:index, :new, :create, :show,:edit,:update, :destroy]
   resources :psses
+
   #we can specify resources :developers, :mrfs
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

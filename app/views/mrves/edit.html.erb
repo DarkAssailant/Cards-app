@@ -16,5 +16,10 @@
       <% end %>
    </ul>
   <% end %>
+<% if @developer %>
+<%= render 'partials/mrf_by_developer_form' %>
+<%= link_to "regresar al desarrollador", developer_mrves_path(@developer) %>
+<% else %>
 <%= render 'partials/mrf_form' %>
 <%= link_to "regresar al listado", mrves_path %>
+<% end %>

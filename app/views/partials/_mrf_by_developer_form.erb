@@ -1,0 +1,27 @@
+<%= form_for [@developer,@mrf] do |f| %>
+  <div>
+    <%= f.label :mrf_number %></br>
+    <%= f.text_field :mrf_number %>
+  </div>
+  <!-- <div>
+    <%= f.label :description %></br>
+    <%= f.text_field :description %>
+  </div> -->
+  <div class="field">
+    <%= f.label :pss_id %></br>
+    <%= f.select :pss_id, options_from_collection_for_select(@psses, :id, :name, @mrf.pss_id) %>
+  </div>
+  <div>
+    <%= f.label :asset_updates %></br>
+    <%= f.text_field :asset_updates %>
+  </div>
+  <div>
+    <%= f.label :defect_counter %></br>
+    <%= f.text_field :defect_counter %>
+  </div>
+  <div>
+    <%= f.label :moved %></br>
+    <%= f.check_box :moved %>
+  </div>
+  <%= f.submit %>
+<% end %>
